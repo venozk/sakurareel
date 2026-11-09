@@ -1,6 +1,5 @@
 (() => {
   const E = window.EPISODES, S = window.SITE, app = document.getElementById("app");
-  document.getElementById("support").href = S.support;
   const esc = t => String(t).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const grad = e => `--a:${esc(e.c[0])};--b:${esc(e.c[1])}`;
   const card = e => `<a class="card" href="#/watch/${esc(e.id)}" style="${grad(e)}">
@@ -40,8 +39,7 @@
       <h1 style="margin-top:20px;font-size:1.8rem">${esc(e.series)}, Episode ${e.ep}: ${esc(e.title)}</h1>
       <p style="margin:8px 0"><span class="badge">Made with AI</span></p><p>${esc(e.desc)}</p>
       <div class="actions">
-        ${e.download ? `<a class="btn" href="${esc(e.download)}" target="_blank" rel="noopener">Download episode</a>` : ""}
-        <a class="btn alt" href="${esc(S.support)}" target="_blank" rel="noopener">Support the creator</a></div></div>
+        ${e.download ? `<a class="btn" href="${esc(e.download)}" target="_blank" rel="noopener">Download episode</a>` : ""}</div></div>
       <aside class="side"><h2 style="margin:0">${more.length ? "More from this series" : "Keep watching"}</h2>
       ${(more.length ? more : E.filter(x => x.id !== e.id)).slice(0, 4).map(card).join("")}</aside></div>`;
   }
